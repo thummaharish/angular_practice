@@ -1,0 +1,21 @@
+<app-dashboard></app-dashboard>
+<div class="container-fluid py-2">
+    <div class="row me-2">
+        <div class="col-lg-4 col-md-4 col-sm-3" >
+            <img src="{{viewProduct.image}}" class="w-100" alt="">
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-9">
+            <div>
+                <p><b>Category:</b> {{viewProduct.category}}</p>
+                <p><b>Description:</b> {{viewProduct.description}}</p>
+                <p><b>Price:</b> {{viewProduct.price | currency:'INR' }}</p>
+                <p><b>Rating:</b>{{viewProduct.rating.rate}}</p>
+            </div>
+            <div >
+                <button class="btn btn-primary" (click)="addToCart(viewProduct)" *ngIf="showAdd" >Add To Cart</button>
+                <button class="btn btn-danger" (click)="removeItemFromCart(viewProduct)" *ngIf="showRemove" >Remove</button>
+                <button class="btn btn-warning mx-2" routerLink="/view-all-products" >Back</button>
+            </div>
+        </div>
+    </div>
+</div>

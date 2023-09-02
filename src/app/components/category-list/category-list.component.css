@@ -1,0 +1,25 @@
+.list-group-item{
+    border-radius: 10px;
+    list-style: none;
+    background-color: rgb(137, 231, 137);
+}
+a{
+    color:black;
+}
+
+img{
+    height: 50px;
+    width: 60px;
+}
+.active{
+    border: none;
+    background-color: rgb(19, 36, 48);
+}
+
+.active a:visited{
+
+border: none;
+color: aliceblue;
+
+
+}

@@ -1,0 +1,12 @@
+.dropdown:hover .dropdown-menu{
+    display: block;
+    background-color: rgb(238, 241, 243);
+    color: black;
+   
+    width: 400px;
+}
+
+.dropdown-menu img{
+    width: 50%;
+    height: 100px;
+}

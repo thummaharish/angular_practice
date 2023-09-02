@@ -1,0 +1,25 @@
+{
+  "signup": [
+    {
+      "name": "harish1",
+      "email": "harish1@gmail.com",
+      "password": "12345",
+      "id": 4
+    }
+  ],
+  "customer": [
+    {
+      "name": "harish",
+      "email": "harish@gmail.com",
+      "password": "12345",
+      "id": 1
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "harish thumma3",
+      "email": "t.harish.ce@gmail.com"
+    }
+  ]
+}

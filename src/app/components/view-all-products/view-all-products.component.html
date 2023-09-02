@@ -1,0 +1,29 @@
+<app-dashboard></app-dashboard>
+<app-category-list></app-category-list>
+
+<div class="row mx-3">
+    <!-- {"id":1,
+    "title":"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+    "price":109.95,"description":"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+    "category":"men's clothing",
+    "image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    "rating":{"rate":3.9,"count":120}}, -->
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-3" *ngFor="let x of allProductsList">
+        <div class="card h-100">
+            <div>
+                <img [src]="x.image" class="img-fluid" alt="">
+            </div>
+            <div class="card-body">
+                <div class="card-title"><b><a routerLink="/view-details/{{x.id}}">{{x.title}}</a></b></div>
+                <h3>Category:{{x.category}}</h3>
+                <p>Price:{{x.price | currency:'INR'}}</p>
+    
+            </div>
+            <div class="card-footer d-flex  justify-content-evenly align-content-evenly px-1 ">
+                <button class="btn btn-primary btn-sm "  (click)="addToCart(x)" *ngIf="false" >Add To Cart</button>
+                <button class="btn btn-warning btn-sm mx-2 " routerLink="/view-details/{{x.id}}"> Details</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
