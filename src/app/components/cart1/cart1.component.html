@@ -1,0 +1,137 @@
+<app-dashboard></app-dashboard>
+<div>
+    <h2 class="text-center text-white bg-secondary pb-1 mb-1">Cart Items</h2>
+
+    <div class="row">
+        <div class="col-lg-9 col-md-9">
+            <ng-container *ngIf="displayCart1Items.length != 0">
+                <table class="table text-center">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th scope="col">S.No</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Price</th>
+                            <!-- <th scope="col">Quantity</th>
+                            <th>Amount</th> -->
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cart1Products of displayCart1Items; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>
+                                <img [src]="displayCart1Items[i].image" alt="">
+                            </td>
+                            <td>{{displayCart1Items[i].title}}</td>
+                            <th scope="col">{{displayCart1Items[i].price | currency:'INR'}}</th>
+                            <!-- <th scope="col">
+                                <button class="btn-sm btn  btn-danger" (click)="dec()">
+                                    <strong>-</strong>
+                                </button>
+                                <span>[{{count}}]</span>
+                                <button class="btn-sm btn btn-success" (click)="inc()">
+                                    <strong>+</strong>
+                                </button>
+                            </th> -->
+                            <!-- <th>{{ displayCart1Items[i].price * count | currency:'INR' }}</th> -->
+                            <td>
+                                <button class="btn btn-sm btn-danger "
+                                    (click)="deleteCartItem(cart1Products)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-container>
+
+        </div>
+
+        <!-- Total Section -->
+
+        <div class=" col-lg-3 col-md-3">
+            <ng-container *ngIf="displayCart1Items.length != 0">
+                <div claas="text-center">
+                    <h1>Total Amount</h1><br>
+                    Total Amount:
+                    <strong class="text-success">{{totalAmount | currency:'INR' }}</strong><br>
+                    Tax:
+                    <strong class="text-success">{{taxAmount | number:'1.0-0' | currency:'INR'}}</strong><br>
+                    Final Amount:
+                    <strong class="text-success">{{finalAmount | number:'1.0-0' | currency:'INR' }}</strong>
+                    <div class=" mt-3">
+                        <button type="button" class="btn btn-primary m-1" (click)="checkout()" 
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Check Out</button>
+                        <button class="btn btn-secondary m-1" (click)="empty()">Empty Cart</button>
+                    </div>
+                </div>
+
+                <!-- form start -->
+                <div class="m-2" *ngIf="addressForm">
+                    <!-- Modal -->
+                    <div class="modal" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-center" id="exampleModalLabel">Add the Details</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form [formGroup]="myForm">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                            <input type="email" class="form-control" formControlName="email"
+                                                placeholder="Enter Email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Name</label>
+                                            <input type="name" class="form-control" formControlName="name"
+                                                placeholder="Enter Name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Mobile number</label>
+                                            <input type="mobile" class="form-control" formControlName="mobile"
+                                                placeholder="Enter Mobile Number">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Address</label>
+                                            <textarea class="form-control" placeholder="Enter Address"
+                                                formControlName="address" rows="3"></textarea>
+                                        </div>
+                                    </form>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+                                            routerLink="/order-page" (click)="order()"
+                                            [disabled]="this.myForm.invalid">Order</button>
+                                        <button type="button" class="btn btn-primary mx-2" (click)="cancel()"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- form ends -->
+
+            </ng-container>
+        </div>
+
+    </div>
+
+    <!-- empty cart -->
+    <ng-container *ngIf="displayCart1Items.length == 0">
+        <div class="d-flex justify-content-center mt-5">
+            <div class="card">
+                <div>
+                    <h4>Your cart is empty</h4>
+                    <h6>Please Add Items</h6>
+                    <button class="btn btn-dark" routerLink="/view-all-products">Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

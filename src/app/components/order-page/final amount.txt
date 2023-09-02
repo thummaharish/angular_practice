@@ -1,0 +1,3 @@
+# to getting the final amount from car1.component.ts to order-page-components.ts through service
+
+we are using car1.service.ts

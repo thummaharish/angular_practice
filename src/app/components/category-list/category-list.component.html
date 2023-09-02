@@ -1,0 +1,10 @@
+<div class="list-group  container">
+ <ul class="d-flex justify-content-center flex-wrap mt-2">
+        <li class="list-group-item mx-lg-2 " routerLinkActive="active">
+            <a routerLink="/view-all-products">All Products</a>
+        </li>
+        <li class="list-group-item text-center mx-lg-2" routerLinkActive="active" *ngFor="let category of categoryList">
+            <a [routerLink]="['/view-product-by-category', category]">{{category}}</a>
+        </li>
+    </ul>
+</div>
